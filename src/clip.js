@@ -63,7 +63,10 @@ const clip = params => {
 		let a = params.noteLength.split('/');
 		params.noteLength = a[0] / a[1];
 	}
-
+	if(typeof params.notes == "string"){
+		//If params.notes is a string (like "a1 b2 c3 d4") it will be converted into ["a1", "b2", "c3", "d4"]
+		params.notes = params.notes.split(" ");
+	}
 	// Convert chords if any to notes
 	params.notes = params.notes.map(el => {
 		if (Array.isArray(el)) {
